@@ -1,1 +1,54 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График Смен - My Schedule Bot</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📅 Мой График Смен</h1>
+            <div class="user-info">
+                <span id="user-name">Загрузка...</span>
+                <button id="theme-btn" class="theme-toggle">🌙</button>
+            </div>
+        </header>
+        
+        <div class="filters">
+            <select id="period-select">
+                <option value="week">Текущая неделя</option>
+                <option value="month">Текущий месяц</option>
+                <option value="all">Все смены</option>
+            </select>
+        </div>
+        
+        <div id="loading" class="loading">Загрузка графика...</div>
+        <div id="error" class="error-message"></div>
+        
+        <div id="schedule-container">
+            <div id="schedule-list" class="schedule-list"></div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value" id="total-shifts">0</span>
+                <span class="stat-label">всего смен</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="hours-count">0</span>
+                <span class="stat-label">часов</span>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button id="refresh-btn" class="btn primary">🔄 Обновить</button>
+            <button id="export-btn" class="btn secondary">📤 Экспорт</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
