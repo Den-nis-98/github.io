@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>График Смен - My Schedule Bot</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>📅 Мой График Смен</h1>
-            <div class="user-info">
-                <span id="user-name">Загрузка...</span>
-                <button id="theme-btn" class="theme-toggle">🌙</button>
-            </div>
-        </header>
-        
-        <div class="filters">
-            <select id="period-select">
-                <option value="week">Текущая неделя</option>
-                <option value="month">Текущий месяц</option>
-                <option value="all">Все смены</option>
-            </select>
+<!-- Добавьте эту секцию после schedule-list -->
+<div id="stats-section" style="display: none;">
+    <h2>📊 Статистика работы</h2>
+    <div class="stats-cards">
+        <div class="stat-card">
+            <div class="stat-number" id="total-hours">0</div>
+            <div class="stat-label">Всего часов</div>
         </div>
-        
-        <div id="loading" class="loading">Загрузка графика...</div>
-        <div id="error" class="error-message"></div>
-        
-        <div id="schedule-container">
-            <div id="schedule-list" class="schedule-list"></div>
+        <div class="stat-card">
+            <div class="stat-number" id="total-shifts">0</div>
+            <div class="stat-label">Смен</div>
         </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <span class="stat-value" id="total-shifts">0</span>
-                <span class="stat-label">всего смен</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="hours-count">0</span>
-                <span class="stat-label">часов</span>
-            </div>
-        </div>
-        
-        <div class="actions">
-            <button id="refresh-btn" class="btn primary">🔄 Обновить</button>
-            <button id="export-btn" class="btn secondary">📤 Экспорт</button>
+        <div class="stat-card">
+            <div class="stat-number" id="avg-hours">0</div>
+            <div class="stat-label">В среднем/день</div>
         </div>
     </div>
     
-    <script src="app.js"></script>
-</body>
-</html>
+    <h3>Последние записи</h3>
+    <div id="work-records" class="records-list"></div>
+</div>
+
+<!-- Добавьте кнопку для переключения между графиком и статистикой -->
+<div class="view-switcher">
+    <button onclick="app.showSchedule()" class="btn secondary">📅 График</button>
+    <button onclick="app.showStats()" class="btn secondary">📊 Статистика</button>
+</div>
