@@ -241,4 +241,70 @@ select {
     .actions {
         grid-template-columns: 1fr;
     }
+    .stats-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: var(--tg-theme-secondary-bg-color, #fff);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-number {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: var(--tg-theme-hint-color, #666);
+}
+
+.records-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.record-card {
+    background: var(--tg-theme-secondary-bg-color, #fff);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--success-color);
+}
+
+.record-date {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.record-time {
+    color: var(--tg-theme-hint-color, #666);
+    margin-bottom: 5px;
+}
+
+.record-hours {
+    font-weight: bold;
+    color: var(--success-color);
+}
+
+.record-notes {
+    margin-top: 5px;
+    font-style: italic;
+    color: var(--tg-theme-hint-color, #666);
+}
+
+.view-switcher {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
 }
