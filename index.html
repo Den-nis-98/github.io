@@ -1,19 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Мой Планировщик</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График работы</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <h1>Мой график дел</h1>
-        <form id="task-form">
-            <input type="text" id="task-input" placeholder="Введите задачу...">
-            <input type="date" id="task-date">
-            <button type="submit">Добавить</button>
-        </form>
-        <div id="chart-container"></div>
+        <div class="header">
+            <h1>📅 Мой график работы</h1>
+            <div class="month-nav">
+                <button id="prev-month">←</button>
+                <span id="current-month">Май 2024</span>
+                <button id="next-month">→</button>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="weekdays">
+                <div>Пн</div>
+                <div>Вт</div>
+                <div>Ср</div>
+                <div>Чт</div>
+                <div>Пт</div>
+                <div>Сб</div>
+                <div>Вс</div>
+            </div>
+            <div id="calendar" class="calendar"></div>
+        </div>
+
+        <div id="shift-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Добавить смену</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="selected-date" id="selected-date"></div>
+                    
+                    <div class="time-inputs">
+                        <div class="time-input-group">
+                            <label>Начало смены:</label>
+                            <input type="time" id="start-time" value="09:00">
+                        </div>
+                        <div class="time-input-group">
+                            <label>Конец смены:</label>
+                            <input type="time" id="end-time" value="18:00">
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button id="save-shift" class="btn-primary">Сохранить</button>
+                        <button id="delete-shift" class="btn-danger">Удалить</button>
+                        <button id="cancel-shift" class="btn-secondary">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span>Смен в месяце:</span>
+                <strong id="shifts-count">0</strong>
+            </div>
+            <div class="stat-item">
+                <span>Всего часов:</span>
+                <strong id="total-hours">0</strong>
+            </div>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
