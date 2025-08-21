@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Инициализация бота
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.AAGL1KF81EWrsuZNHGDF5csjvLXCgCZzico);
 
 // Хранилище данных
 const schedules = new Map();
