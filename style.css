@@ -8,9 +8,13 @@
     --tg-theme-hint-color: #999999;
     --tg-theme-link-color: #2481cc;
     --tg-theme-error-color: #ff3b30;
+    --tg-theme-success-color: #34c759;
 }
 
-/* Используем системные шрифты для нативного вида */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
     background-color: var(--tg-theme-bg-color);
@@ -25,167 +29,321 @@ body {
     margin: 0 auto;
 }
 
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h1 {
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
+    margin: 0 0 12px 0;
     color: var(--tg-theme-text-color);
 }
 
-/* Форма добавления задач */
-#task-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
-    padding: 16px;
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 12px;
-}
-
-#task-input, #task-date {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
-}
-
-#task-input::placeholder {
-    color: var(--tg-theme-hint-color);
-}
-
-#task-form button {
-    padding: 12px;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#task-form button:active {
-    background-color: #2c8bcb;
-    transform: scale(0.98);
-}
-
-/* Контейнер для графика задач */
-#chart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* Стили для отдельных задач */
-.task {
+.month-nav {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 12px;
-    gap: 12px;
-    transition: transform 0.2s ease;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
-.task:active {
-    transform: scale(0.98);
-}
-
-.task input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: var(--tg-theme-button-color);
-    flex-shrink: 0;
-}
-
-.task span {
-    flex-grow: 1;
-    font-size: 16px;
-    word-break: break-word;
-}
-
-.task small {
-    color: var(--tg-theme-hint-color);
-    font-size: 14px;
-    flex-shrink: 0;
-}
-
-.task button {
-    background-color: var(--tg-theme-error-color);
-    color: white;
+.month-nav button {
+    background: var(--tg-theme-secondary-bg-color);
     border: none;
-    border-radius: 6px;
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
-    font-weight: bold;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
     cursor: pointer;
-    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.task button:active {
-    background-color: #d32f2f;
-}
-
-/* Состояние выполненной задачи */
-.task.completed {
-    opacity: 0.7;
-}
-
-.task.completed span {
-    text-decoration: line-through;
-    color: var(--tg-theme-hint-color);
-}
-
-/* Сообщение когда нет задач */
-#chart-container > p {
+.month-nav span {
+    font-weight: 600;
+    font-size: 16px;
+    min-width: 120px;
     text-align: center;
-    color: var(--tg-theme-hint-color);
-    font-style: italic;
-    padding: 40px 20px;
 }
 
-/* Адаптивность для маленьких экранов */
+/* Календарь */
+.calendar-container {
+    background: var(--tg-theme-secondary-bg-color);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--tg-theme-hint-color);
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.day {
+    aspect-ratio: 1;
+    padding: 8px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    background: var(--tg-theme-bg-color);
+}
+
+.day:hover {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+.day.other-month {
+    opacity: 0.3;
+}
+
+.day.weekend {
+    background: rgba(255, 59, 48, 0.1);
+}
+
+.day.has-shift {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    font-weight: 600;
+}
+
+.day-number {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.day-shift {
+    font-size: 9px;
+    margin-top: 2px;
+    opacity: 0.9;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--tg-theme-bg-color);
+    margin: 15% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close {
+    color: var(--tg-theme-hint-color);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close:hover {
+    background: var(--tg-theme-secondary-bg-color);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.selected-date {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: var(--tg-theme-secondary-bg-color);
+    border-radius: 12px;
+}
+
+.time-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.time-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.time-input-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tg-theme-hint-color);
+}
+
+.time-input-group input {
+    padding: 12px;
+    border: 2px solid var(--tg-theme-secondary-bg-color);
+    border-radius: 12px;
+    font-size: 16px;
+    background: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.time-input-group input:focus {
+    border-color: var(--tg-theme-button-color);
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button {
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+.btn-danger {
+    background: var(--tg-theme-error-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Статистика */
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.stat-item {
+    background: var(--tg-theme-secondary-bg-color);
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 14px;
+    color: var(--tg-theme-hint-color);
+    margin-bottom: 4px;
+}
+
+.stat-item strong {
+    font-size: 18px;
+    color: var(--tg-theme-text-color);
+}
+
+/* Адаптивность */
 @media (max-width: 480px) {
     body {
         padding: 12px;
     }
     
-    #task-form {
+    .calendar-container {
         padding: 12px;
     }
     
-    .task {
-        padding: 12px;
-        flex-wrap: wrap;
+    .day {
+        padding: 4px;
     }
     
-    .task small {
-        width: 100%;
-        margin-top: 4px;
-        margin-left: 32px; /* Выравниваем с текстом задачи */
+    .day-number {
+        font-size: 12px;
+    }
+    
+    .day-shift {
+        font-size: 8px;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
     }
 }
 
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.task {
-    animation: fadeIn 0.3s ease;
-}
-
-/* Стиль для скролла (только для WebKit) */
+/* Скроллбар */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -198,8 +356,4 @@ h1 {
 ::-webkit-scrollbar-thumb {
     background: var(--tg-theme-hint-color);
     border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #888;
 }
