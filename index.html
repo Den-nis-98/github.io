@@ -1,27 +1,20 @@
-<!-- Добавьте эту секцию после schedule-list -->
-<div id="stats-section" style="display: none;">
-    <h2>📊 Статистика работы</h2>
-    <div class="stats-cards">
-        <div class="stat-card">
-            <div class="stat-number" id="total-hours">0</div>
-            <div class="stat-label">Всего часов</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="total-shifts">0</div>
-            <div class="stat-label">Смен</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="avg-hours">0</div>
-            <div class="stat-label">В среднем/день</div>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой Планировщик</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Мой график дел</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Введите задачу...">
+            <input type="date" id="task-date">
+            <button type="submit">Добавить</button>
+        </form>
+        <div id="chart-container"></div>
     </div>
-    
-    <h3>Последние записи</h3>
-    <div id="work-records" class="records-list"></div>
-</div>
-
-<!-- Добавьте кнопку для переключения между графиком и статистикой -->
-<div class="view-switcher">
-    <button onclick="app.showSchedule()" class="btn secondary">📅 График</button>
-    <button onclick="app.showStats()" class="btn secondary">📊 Статистика</button>
-</div>
+    <script src="app.js"></script>
+</body>
+</html>
