@@ -8,45 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Экран авторизации -->
-    <div id="auth-screen">
-        <div class="auth-container">
-            <h1>📅 График работы</h1>
-            
-            <div id="login-form">
-                <h2>Вход в систему</h2>
-                <input type="text" id="login-username" placeholder="Ваш никнейм" required>
-                <input type="password" id="login-password" placeholder="Пароль" required>
-                <button onclick="login()" class="btn-primary">Войти</button>
-                <p>Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></p>
-            </div>
-
-            <div id="register-form" class="hidden">
-                <h2>Регистрация</h2>
-                <input type="text" id="register-username" placeholder="Придумайте никнейм (латиница)" required>
-                <input type="text" id="register-fullname" placeholder="Фамилия Имя" required>
-                <input type="password" id="register-password" placeholder="Пароль" required>
-                <input type="password" id="register-confirm" placeholder="Повторите пароль" required>
-                <button onclick="register()" class="btn-primary">Зарегистрироваться</button>
-                <p>Уже есть аккаунт? <a href="#" onclick="showLogin()">Войти</a></p>
-            </div>
-
-            <div id="auth-message" class="hidden"></div>
-        </div>
-    </div>
-
-    <!-- Основное приложение -->
-    <div id="app" class="hidden">
+    <div id="app">
         <div class="header">
-            <div class="user-info">
-                <span id="user-name"></span>
-                <button onclick="logout()" class="btn-secondary">Выйти</button>
-            </div>
             <h1>📅 Мой график работы</h1>
             <div class="month-nav">
-                <button id="prev-month" class="btn-icon">←</button>
+                <button id="prev-month">←</button>
                 <span id="current-month">Май 2024</span>
-                <button id="next-month" class="btn-icon">→</button>
+                <button id="next-month">→</button>
             </div>
         </div>
 
@@ -63,7 +31,7 @@
             <div id="calendar" class="calendar"></div>
         </div>
 
-        <div id="shift-modal" class="modal hidden">
+        <div id="shift-modal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3>Добавить смену</h3>
@@ -102,22 +70,7 @@
                 <strong id="total-hours">0</strong>
             </div>
         </div>
-
-        <!-- Кнопка переключения между личным и общим графиком -->
-        <div class="view-toggle">
-            <button id="personal-view" class="btn-primary active">Мой график</button>
-            <button id="general-view" class="btn-secondary">Общий график</button>
-        </div>
-
-        <!-- Контейнер для общего графика -->
-        <div id="general-schedule" class="hidden">
-            <h3>👥 Общий график сотрудников</h3>
-            <div id="all-shifts" class="shifts-list"></div>
-        </div>
     </div>
-
-    <!-- Подключаем Supabase -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="app.js"></script>
 </body>
 </html>
