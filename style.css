@@ -9,7 +9,7 @@ body {
     line-height: 1.6;
     background: #f5f5f5;
     color: #333;
-    padding: 20px;
+    padding: 16px;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -25,22 +25,23 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 16px;
 }
 
 .auth-container {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     width: 100%;
     max-width: 400px;
 }
 
 .auth-container h1 {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
     color: #333;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .auth-container input {
@@ -67,7 +68,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 16px;
     transition: background 0.3s;
 }
 
@@ -87,7 +88,7 @@ body {
 
 #auth-message {
     padding: 12px;
-    margin-top: 15px;
+    margin-top: 16px;
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
@@ -109,14 +110,15 @@ body {
 #app {
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .header {
     background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
 }
 
@@ -124,34 +126,37 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
     border-bottom: 2px solid #f0f0f0;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .user-info span {
     font-weight: 600;
     color: #555;
+    font-size: 14px;
 }
 
 .header h1 {
     color: #333;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    margin-bottom: 16px;
+    font-size: 1.6rem;
 }
 
 .month-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .month-nav span {
     font-weight: 600;
-    font-size: 1.2rem;
-    min-width: 120px;
+    font-size: 1.1rem;
+    min-width: 140px;
     text-align: center;
 }
 
@@ -160,11 +165,12 @@ body {
     background: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
     transition: background 0.3s;
+    min-height: 40px;
 }
 
 .btn-primary:hover {
@@ -175,11 +181,12 @@ body {
     background: #6c757d;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
     transition: background 0.3s;
+    min-height: 40px;
 }
 
 .btn-secondary:hover {
@@ -190,11 +197,12 @@ body {
     background: #dc3545;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
     transition: background 0.3s;
+    min-height: 40px;
 }
 
 .btn-danger:hover {
@@ -209,6 +217,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s;
+    min-height: 40px;
 }
 
 .btn-icon:hover {
@@ -216,29 +225,34 @@ body {
     border-color: #007bff;
 }
 
-/* Календарь */
+/* Календарь - ОСНОВНЫЕ ИЗМЕНЕНИЯ */
 .calendar-container {
     background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    overflow: hidden;
 }
 
 .weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-bottom: 10px;
+    gap: 4px;
+    margin-bottom: 8px;
     text-align: center;
     font-weight: 600;
     color: #555;
+    font-size: 12px;
+    padding: 0 2px;
 }
 
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+    gap: 4px;
+    width: 100%;
 }
 
 .day {
@@ -246,11 +260,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
+    border: 1.5px solid #e9ecef;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 500;
+    font-size: 12px;
+    min-height: 32px;
+    padding: 2px;
+    position: relative;
 }
 
 .day:hover {
@@ -261,18 +279,21 @@ body {
 .day.other-month {
     color: #adb5bd;
     background: #f8f9fa;
+    opacity: 0.7;
 }
 
 .day.has-shift {
     background: #d4edda;
     border-color: #c3e6cb;
     color: #155724;
+    font-weight: 600;
 }
 
 .day.today {
     background: #007bff;
     color: white;
     border-color: #0056b3;
+    font-weight: 700;
 }
 
 /* Модальное окно */
@@ -287,33 +308,35 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    padding: 16px;
 }
 
 .modal-content {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
     border-bottom: 2px solid #f0f0f0;
 }
 
 .modal-header h3 {
     color: #333;
     margin: 0;
+    font-size: 1.3rem;
 }
 
 .close {
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
     color: #999;
     transition: color 0.3s;
@@ -325,27 +348,31 @@ body {
 
 .selected-date {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
     color: #333;
+    line-height: 1.4;
 }
 
 .time-inputs {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .time-input-group {
     flex: 1;
+    min-width: 120px;
 }
 
 .time-input-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-weight: 600;
     color: #555;
+    font-size: 14px;
 }
 
 .time-input-group input {
@@ -353,7 +380,7 @@ body {
     padding: 10px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .time-input-group input:focus {
@@ -363,51 +390,58 @@ body {
 
 .modal-actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .modal-actions button {
     flex: 1;
+    min-width: 80px;
 }
 
 /* Статистика */
 .stats {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .stat-item {
     flex: 1;
     background: white;
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 16px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    min-width: 120px;
 }
 
 .stat-item span {
     display: block;
     color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    font-size: 13px;
+    margin-bottom: 6px;
 }
 
 .stat-item strong {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #007bff;
+    font-weight: 700;
 }
 
 /* Переключение видов */
 .view-toggle {
     display: flex;
-    gap: 10px;
-    margin-bottom: 1.5rem;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .view-toggle button {
     flex: 1;
+    min-width: 120px;
 }
 
 .view-toggle button.active {
@@ -417,15 +451,17 @@ body {
 /* Общий график */
 #general-schedule {
     background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
 #general-schedule h3 {
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .shifts-list {
@@ -435,71 +471,179 @@ body {
 
 .shift-item {
     background: #f8f9fa;
-    padding: 1rem;
-    margin: 0.5rem 0;
+    padding: 12px;
+    margin: 8px 0;
     border-radius: 8px;
     border-left: 4px solid #007bff;
+    font-size: 13px;
 }
 
 .shift-item strong {
     color: #333;
+    font-size: 14px;
 }
 
 .shift-item small {
     color: #666;
+    display: block;
+    margin-top: 4px;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 12px;
     }
     
-    .auth-container {
-        margin: 1rem;
-        padding: 1.5rem;
+    .header {
+        padding: 16px;
     }
     
-    .time-inputs {
+    .user-info {
         flex-direction: column;
-        gap: 0.5rem;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .month-nav span {
+        font-size: 1rem;
+        min-width: 120px;
+    }
+    
+    .calendar-container {
+        padding: 12px;
+    }
+    
+    .weekdays {
+        font-size: 11px;
+        gap: 3px;
+    }
+    
+    .day {
+        font-size: 11px;
+        min-height: 28px;
+        border-width: 1px;
     }
     
     .stats {
         flex-direction: column;
+        gap: 8px;
+    }
+    
+    .stat-item {
+        min-width: auto;
+    }
+    
+    .time-inputs {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .time-input-group {
+        min-width: auto;
     }
     
     .modal-actions {
         flex-direction: column;
     }
     
-    .user-info {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+    .modal-actions button {
+        width: 100%;
     }
     
     .view-toggle {
         flex-direction: column;
     }
+    
+    .view-toggle button {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
-    .calendar {
+    .auth-container {
+        padding: 20px;
+    }
+    
+    .calendar-container {
+        padding: 10px;
+    }
+    
+    .weekdays {
+        font-size: 10px;
         gap: 2px;
     }
     
     .day {
-        font-size: 12px;
-        padding: 5px;
+        font-size: 10px;
+        min-height: 24px;
+        border-radius: 4px;
     }
     
-    .weekdays div {
-        font-size: 12px;
+    .month-nav span {
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+    
+    .btn-icon {
+        padding: 6px 10px;
+        font-size: 14px;
+        min-height: 36px;
     }
     
     .modal-content {
-        padding: 1rem;
-        margin: 1rem;
+        padding: 16px;
+        margin: 0 8px;
+    }
+    
+    .selected-date {
+        font-size: 1rem;
+    }
+    
+    .shift-item {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .day {
+        font-size: 9px;
+        min-height: 22px;
+    }
+    
+    .weekdays {
+        font-size: 9px;
+    }
+    
+    .month-nav span {
+        font-size: 0.8rem;
+        min-width: 90px;
+    }
+    
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .stat-item strong {
+        font-size: 1.2rem;
+    }
+}
+
+/* Улучшение для landscape режима на мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+    .calendar-container {
+        padding: 8px;
+    }
+    
+    .day {
+        min-height: 20px;
+        font-size: 10px;
+    }
+    
+    .weekdays {
+        font-size: 10px;
+        margin-bottom: 4px;
     }
 }
